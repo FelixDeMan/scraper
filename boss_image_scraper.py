@@ -16,9 +16,7 @@ args = parser.parse_args()
 options = webdriver.ChromeOptions()
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
-
-
-if args.url is not None:
+def scrape_product_page(url):
     driver = webdriver.Chrome(executable_path=r"C:\Users\Jan-FelixdeMan\Downloads\chromedriver_110\chromedriver.exe", chrome_options=options)
     # Launch the browser and open the given url in the webdriver
     url = args.url
@@ -53,7 +51,7 @@ if args.url is not None:
     # Quit the ChromeDriver
     driver.quit()
 
-elif args.filename is not None:
+def scrape_txtfile(filename):
     filename = args.filename
     #read urls from filename in a list without \n 
     with open(filename, 'r') as f:
@@ -92,3 +90,16 @@ elif args.filename is not None:
 
     # Quit the ChromeDriver
     driver.quit()
+
+if __name__ == "__main__":
+
+    if args.url is not None:
+        print("Scraping product page...")
+        url = args.url
+        scrape_product_page(url)
+
+    
+    elif args.filename is not None:
+        print("Scraping product pages from file...")
+        filename = args.filename
+        scrape_txtfile(filename)
