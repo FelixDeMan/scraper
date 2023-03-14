@@ -1,2 +1,4 @@
 *.txt
 /Hugo_Boss
+vogue_image_scrapper.py
+boss_image_scrapper.py
